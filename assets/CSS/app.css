@@ -37,7 +37,8 @@ header {
   cursor: pointer;
 }
 
-#allScores:hover {
+#allScores:hover,
+#start:hover {
   background-color: #d90429;
   box-shadow: 0 0 0.5em #d90429;
 }
@@ -137,11 +138,27 @@ main {
   color: #457b9d;
 }
 
+.answerBtn:hover {
+  background-color: #457b9d;
+  color: #edf2f4;
+}
+
 .feedbackContainer {
   width: 100%;
   height: auto;
   background-color: rgba(250, 235, 215, 0.5);
   border-top: 0.1em solid #457b9d;
+}
+
+#feedback {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5em;
+  margin: 0.5em;
+  text-align: center;
+  color: rgba(69, 123, 157, 0.856);
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
 }
 
 footer {
