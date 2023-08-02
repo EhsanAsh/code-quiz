@@ -24,7 +24,7 @@
 
   ---
 
-  # Algorithm:
+# Algorithm:
 >Create and deploy a **Code Quiz** web application, which has a timer, ask related questions to assess the coding capability of the student, receives inputs, subtracts time for wrong answers, executes a time over when the timer reaches 0 or all questions are answered and finally saves initials and score.
 
 ---
@@ -38,8 +38,8 @@
 
 ### Development Phase
 1. Create a basic layout of the application based on the defined design, including creating empty divs or sections for the quiz questions, timer, and scores.
-2. Implement Timer Functionality: Add a timer that starts when the start button is clicked. The timer should be visible on the screen.
-3. Create a data structure (like an array or object) to store all the questions for the quiz. Each question should have an associated set of possible answers and an indicator of which answer is correct.
+2. Add a timer that starts when the start button is clicked. The timer should be visible on the screen.
+3. Create a data structure to store all the questions for the quiz. Each question should have an associated set of possible answers and an indicator of which answer is correct.
 4. Implement functionality to display a question from your database when the quiz starts, and then a new question each time an answer is submitted.
 5. Add functionality to check whether the selected answer is correct when an answer is submitted. If the answer is incorrect, subtract time from the timer.
 6. Add functionality to end the game when all questions have been answered or the timer has reached zero.
