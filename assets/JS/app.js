@@ -141,3 +141,6 @@ const fireBtn = function (event) {
 
 // Start button event listener
 startButton.addEventListener("click", fireBtn);
+
+// Answer button event listener
+answerContainer.addEventListener("click", checkAnswer);
