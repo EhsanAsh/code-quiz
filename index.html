@@ -26,17 +26,17 @@
   <header>
 
     <nav id="scoreContainer">
-      <a href="./index.html" draggable="false" id="score">View Highscores</a>
+      <button id="allScores" value="View Highscores">View Highscores</button>
     </nav>
 
     <div id="timerContainer">
-      <span class="timer">Time: 0</span>
+      <span class="timer"></span>
     </div>
 
     <h1>
       <span class="title">Coding Quiz Challenge</span>
       <span class="subtitle">Try to answer the following code-related questions within the time limit. Keep in mind that
-        incorrect answers will penalize your score/time by ten seconds!</span>
+        incorrect answers will penalize your time by ten seconds!</span>
     </h1>
 
   </header>
@@ -44,12 +44,40 @@
   <main>
 
     <div class="startContainer">
-      <button id="start">Start Quiz</button>
+      <button id="start" value="Start Quiz">Start Quiz</button>
     </div>
+
+    <!-- Creating a section to contain the questions and answers structure.-->
+    <section id="qaContainer">
+
+      <div class="questionContainer">
+        <h2 id="questionTxt"></h2>
+      </div>
+
+      <div class="answerContainer">
+        <button class="answerBtn" id="answerBtn1" title="answer1"></button>
+        <button class="answerBtn" id="answerBtn2" title="answer2"></button>
+        <button class="answerBtn" id="answerBtn3" title="answer3"></button>
+        <button class="answerBtn" id="answerBtn4" title="answer4"></button>
+      </div>
+
+      <div class="feedbackContainer">
+        <span id="feedback"></span>
+      </div>
+
+    </section>
+
+
+
 
   </main>
 
   <footer>
+
+    <div class="footerContainer">
+      <span class="footerTxt">Coding Quiz Challenge</span>
+      <span class="footerTxt">&copy; | Aug, 2023 | Ehsan@sh</span>
+    </div>
 
   </footer>
 
