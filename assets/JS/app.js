@@ -1,3 +1,5 @@
+// Used(https://www.w3schools.com/js/js_let.asp) as a reference.
+// Used(https://www.w3schools.com/js/js_const.asp) as a reference.
 // Defining variables
 let scoreContainer = document.querySelector("#scoreContainer");
 let allScores = document.querySelector("#allScores");
@@ -28,6 +30,7 @@ qaContainer.style.display = "none";
 //Creating a data structure to store all the questions and answers.
 // Used(https://www.w3schools.com/js/js_array_const.asp) as a reference.
 const questions = [
+
   {
     question: "1. What is the correct syntax for referring to an external script called 'xxx.js'?",
     answers: [
@@ -37,6 +40,7 @@ const questions = [
       { text: "<script file='xxx.js'>", correct: false },
     ]
   },
+
   {
     question: "2. How do you write 'Hello World' in an alert box?",
     answers: [
@@ -46,6 +50,7 @@ const questions = [
       { text: "alert('Hello World');", correct: true },
     ]
   },
+
   {
     question: "3. How do you create a function in JavaScript?",
     answers: [
@@ -55,6 +60,7 @@ const questions = [
       { text: "function-myFunction()", correct: false },
     ]
   },
+
   {
     question: "4. How do you call a function named 'myFunction'?",
     answers: [
@@ -64,6 +70,7 @@ const questions = [
       { text: "function myFunction()", correct: false },
     ]
   },
+
   {
     question: "5. How to write an IF statement in JavaScript?",
     answers: [
@@ -73,6 +80,7 @@ const questions = [
       { text: "if (i == 5)", correct: true },
     ]
   },
+
   {
     question: "6. Which one is the exact syntax of a FOR loop in JavaScript?",
     answers: [
@@ -82,6 +90,7 @@ const questions = [
       { text: "for (i = 0; i <= 5; i++) {}", correct: true },
     ]
   },
+
   {
     question: "7. How does a WHILE loop start?",
     answers: [
@@ -91,6 +100,7 @@ const questions = [
       { text: "while i = 1 to 10:", correct: false },
     ]
   },
+
   {
     question: "8. Which one is the correct Logical Operater?",
     answers: [
@@ -100,33 +110,76 @@ const questions = [
       { text: "&", correct: false },
     ]
   }
+
 ];
 
 // Used(https://www.w3schools.com/jsref/met_win_settimeout.asp) as a reference.
 const displayFeedback = function (text) {
+
   feedback.textContent = text;
   feedbackContainer.style.display = "block";
+
   setTimeout(function () {
     feedbackContainer.style.display = "none";
   }, 1000);
-}
+
+};
 
 // Used(https://www.w3schools.com/js/js_arrays.asp) as a reference.
 const displayQuestion = function () {
+
   qaContainer.style.display = "block";
+
   const currentQuestion = questions[currentQuestionIndex];
   questionTxt.textContent = currentQuestion.question;
   answerBtn1.textContent = currentQuestion.answers[0].text;
   answerBtn2.textContent = currentQuestion.answers[1].text;
   answerBtn3.textContent = currentQuestion.answers[2].text;
   answerBtn4.textContent = currentQuestion.answers[3].text;
+
+};
+
+// Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
+// Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
+const checkAnswer = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (!event.target.matches(".answerBtn")) return;
+  
+  const currentQuestion = questions[currentQuestionIndex];
+  // getting the index of the chosen answer
+  const chosenAnswerIndex = event.target.title.replace('answer', '') - 1; 
+  const correctAnswer = currentQuestion.answers[chosenAnswerIndex].correct; 
+
+  if (correctAnswer) {
+    displayFeedback("Correct!");
+  }
+  else {
+    if (timeLeft > 10) {
+      timeLeft -= 10;
+    } else {
+      timeLeft = 0;
+    };
+    displayFeedback("Wrong!");
+  };
+
+  currentQuestionIndex++; 
+
+  if (currentQuestionIndex < questions.length) { 
+    displayQuestion(); 
+  };
+
 };
 
 // Start button event listener linked to the timer
 // Used(https://www.w3schools.com/jsref/met_win_setinterval.asp) as a reference.
 const fireBtn = function (event) {
+
   event.preventDefault();
   event.stopPropagation();
+
   timerContainer.style.display = "block";
   startContainer.style.display = "none";
   initialMsg.style.display = "none";
@@ -135,9 +188,14 @@ const fireBtn = function (event) {
     timer.textContent = `Time remaining: ${timeLeft}`;
     timeLeft--;
   };
+
   timerInterval = setInterval(countDown, 1000);
   displayQuestion();
+
 };
 
 // Start button event listener
 startButton.addEventListener("click", fireBtn);
+
+// Answer button event listener
+answerContainer.addEventListener("click", checkAnswer);
