@@ -27,7 +27,9 @@ header {
 #allScores,
 #start,
 .answerBtn,
-#submitBtn {
+#submitBtn,
+#goBackBtn,
+#clearBtn {
   font-size: 1rem;
   background-color: #ef233c;
   color: #edf2f4;
@@ -40,7 +42,9 @@ header {
 
 #allScores:hover,
 #start:hover,
-#submitBtn:hover {
+#submitBtn:hover,
+#goBackBtn:hover,
+#clearBtn:hover {
   background-color: #d90429;
   box-shadow: 0 0 0.5em #d90429;
 }
@@ -95,7 +99,8 @@ main {
 }
 
 #qaContainer,
-#scoreInputContainer {
+#scoreInputContainer,
+#highscoresContainer {
   background-color: rgba(241, 250, 238, 0.8);
   width: 50%;
   height: auto;
@@ -111,7 +116,9 @@ main {
 #qaContainer,
 .answerContainer,
 .feedbackContainer,
-#scoreInputContainer {
+#scoreInputContainer,
+#highscoresContainer,
+.resetBtnsContainer {
   margin: 0.5em;
   padding: 0.7em;
 }
@@ -123,7 +130,8 @@ main {
 }
 
 #questionTxt,
-#scoreInputContainer {
+#scoreInputContainer,
+#highscoresContainer {
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
@@ -187,6 +195,29 @@ main {
 #initialsInput:focus {
   outline: none;
   border-right: 0.3em solid rgba(69, 123, 157, 0.8);
+}
+
+.highscoresListContainer {
+  font-family: "Bungee Spice", cursive;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 0.5em 0;
+}
+
+#highscoresTxt {
+  border-bottom: 0.1em solid rgba(69, 123, 157, 0.8);
+}
+
+#highscoresList,
+#highscoresTxt {
+  list-style: none;
+  padding: 0.2em;
+  margin: 0.2em;
+  text-align: left;
 }
 
 footer {
