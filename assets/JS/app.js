@@ -152,6 +152,7 @@ const timesUp = function () {
     clearInterval(timerInterval);
     timer.textContent = "Time's up!";
     gameIsOver = true;
+    displayScore();
   };
 
 };
