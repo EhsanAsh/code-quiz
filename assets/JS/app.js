@@ -43,6 +43,8 @@ let clearBtn = document.querySelector("#clearBtn");
 // Hiding elements that are not needed at some point
 timerContainer.style.display = "none";
 qaContainer.style.display = "none";
+scoreInputContainer.style.display = "none";
+highscoresContainer.style.display = "none";
 
 //Creating a data structure to store all the questions and answers.
 // Used(https://www.w3schools.com/js/js_array_const.asp) as a reference.
@@ -168,6 +170,14 @@ const displayQuestion = function () {
 
 };
 
+//Displaying the final result of score and time
+const displayScore = function () {
+  scoreInputContainer.style.display = "block";
+  scoreSpan.textContent = scoreCounter;
+  timerContainer.style.display = "none";
+  qaContainer.style.display = "none";
+}
+
 // Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 const checkAnswer = function (event) {
@@ -183,6 +193,8 @@ const checkAnswer = function (event) {
   const correctAnswer = currentQuestion.answers[chosenAnswerIndex].correct; 
 
   if (correctAnswer) {
+
+    scoreCounter += 10;
     displayFeedback("Correct!");
   }
   else {
@@ -198,12 +210,15 @@ const checkAnswer = function (event) {
 
   currentQuestionIndex++; 
 
-  if (currentQuestionIndex < questions.length && !gameIsOver) { 
+  if (currentQuestionIndex < questions.length && !gameIsOver) {
+
     displayQuestion(); 
   }
   else { 
     timesUp();
     gameIsOver = true;
+    displayScore();
+    
   };
   
 };
