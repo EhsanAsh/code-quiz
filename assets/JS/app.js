@@ -1,8 +1,8 @@
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 // Used(https://www.w3schools.com/js/js_let.asp) as a reference.
 // Used(https://www.w3schools.com/js/js_const.asp) as a reference.
+
 // Defining variables
-let scoreContainer = document.querySelector("#scoreContainer");
 let allScores = document.querySelector("#allScores");
 let timerContainer = document.querySelector("#timerContainer");
 let timer = document.querySelector(".timer");
@@ -28,16 +28,11 @@ let scoreCounter = 0;
 let scoreInputContainer = document.querySelector("#scoreInputContainer");
 let scoreTxt = document.querySelector("#scoreTxt");
 let scoreSpan = document.querySelector("#scoreSpan");
-let initialsContainer = document.querySelector(".initialsContainer");
 let initialsInput = document.querySelector("#initialsInput");
-let submitContainer = document.querySelector(".submitContainer");
 let submitBtn = document.querySelector("#submitBtn");
 let highscoresContainer = document.querySelector("#highscoresContainer");
-let highscoresTxt = document.querySelector("#highscoresTxt");
-let highscoresListContainer = document.querySelector(".highscoresListContainer");
 let highscoresList = document.querySelector("#highscoresList");
 let highscores = []; // adding a variable to store highscores
-let resetBtnsContainer = document.querySelector(".resetBtnsContainer");
 let goBackBtn = document.querySelector("#goBackBtn");
 let clearBtn = document.querySelector("#clearBtn");
 
@@ -152,6 +147,7 @@ const timesUp = function () {
     clearInterval(timerInterval);
     timer.textContent = "Time's up!";
     gameIsOver = true;
+    displayScore();
   };
 
 };
@@ -160,7 +156,7 @@ const timesUp = function () {
 const displayQuestion = function () {
 
   if (gameIsOver) return;
-  qaContainer.style.display = "block";
+  qaContainer.style.display = "flex";
 
   const currentQuestion = questions[currentQuestionIndex];
   questionTxt.textContent = currentQuestion.question;
@@ -174,7 +170,7 @@ const displayQuestion = function () {
 //Displaying the final result of score and time
 const displayScore = function () {
 
-  scoreInputContainer.style.display = "block";
+  scoreInputContainer.style.display = "flex";
   scoreSpan.textContent = scoreCounter;
   timerContainer.style.display = "none";
   qaContainer.style.display = "none";
@@ -187,7 +183,7 @@ const displayHighscores = function () {
   highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
   scoreInputContainer.style.display = "none";
-  highscoresContainer.style.display = "block";
+  highscoresContainer.style.display = "flex";
 
   highscoresList.innerHTML = "";
 
@@ -211,7 +207,7 @@ const displayHighscoresView = function (event) {
   initialMsg.style.display = "none";
   timerContainer.style.display = "none";
   scoreInputContainer.style.display = "none";
-  highscoresContainer.style.display = "block";
+  highscoresContainer.style.display = "flex";
 
   displayHighscores();
 
@@ -223,6 +219,11 @@ const exSubmit = function (event) {
   event.stopPropagation();
 
   const initials = initialsInput.value.trim().toUpperCase();
+  if (initials === "" || initials.length > 3) {
+    alert("Please enter your initials (max 3 characters, no spaces and starting with a letter)");
+    return;
+  }
+
   highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
   const highscore = {
@@ -247,8 +248,8 @@ const restart = function (event) {
 
   highscoresContainer.style.display = "none";
   timerContainer.style.display = "none";
-  startContainer.style.display = "block";
-  initialMsg.style.display = "block";
+  startContainer.style.display = "flex";
+  initialMsg.style.display = "flex";
 
   // resetting all the counters and variables
   timer.textContent = `Time remaining: 80`;
@@ -323,7 +324,7 @@ const fireBtn = function (event) {
   event.preventDefault();
   event.stopPropagation();
 
-  timerContainer.style.display = "block";
+  timerContainer.style.display = "flex";
   startContainer.style.display = "none";
   initialMsg.style.display = "none";
 

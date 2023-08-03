@@ -46,7 +46,7 @@ header {
 #goBackBtn:hover,
 #clearBtn:hover {
   background-color: #d90429;
-  box-shadow: 0 0 0.5em #d90429;
+  box-shadow: 0 0 0.5em rgba(217, 4, 39, 0.9);
 }
 
 #timerContainer {
@@ -78,7 +78,6 @@ h1 {
 }
 
 .subtitle {
-  font-size: 1.5rem;
   margin: 0.3em;
   padding: 0.3em;
   line-height: 1.2em;
@@ -108,14 +107,16 @@ main {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  border: 0.2em solid rgba(168, 218, 220, 0.4);
+  border: 0.2em solid rgba(168, 218, 220, 0.55);
   border-radius: 0.5em;
   box-shadow: 0 0 1em 0.1em rgba(168, 218, 220, 0.4);
 }
 
 #qaContainer,
+#questionTxt,
 .answerContainer,
 .feedbackContainer,
+#feedback,
 #scoreInputContainer,
 #highscoresContainer,
 .resetBtnsContainer {
@@ -125,8 +126,6 @@ main {
 
 #questionTxt {
   float: left;
-  padding: 0.5em;
-  margin: 0.5em;
 }
 
 #questionTxt,
@@ -169,8 +168,6 @@ main {
 #feedback {
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.5em;
-  margin: 0.5em;
   text-align: center;
   color: rgba(69, 123, 157, 0.856);
   line-height: 1.5em;
@@ -221,10 +218,45 @@ main {
 }
 
 footer {
-  position: relative;
-  left: 35%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   color: #6a040f;
   padding: 0.5em;
-  margin: 1em;
   text-align: center;
+}
+
+@media only screen and (max-width: 650px) {
+  header {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #qaContainer,
+  #scoreInputContainer,
+  #highscoresContainer {
+    width: 80%;
+  }
+
+  #allScores,
+  #start,
+  .answerBtn,
+  #submitBtn,
+  #goBackBtn,
+  #clearBtn,
+  #questionTxt,
+  #scoreInputContainer,
+  #highscoresContainer,
+  #feedback,
+  #initialsInput,
+  #highscoresList,
+  #highscoresTxt {
+    font-size: 0.8rem;
+  }
 }
