@@ -1,3 +1,4 @@
+// Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 // Used(https://www.w3schools.com/js/js_let.asp) as a reference.
 // Used(https://www.w3schools.com/js/js_const.asp) as a reference.
 // Defining variables
@@ -23,10 +24,28 @@ let feedbackContainer = document.querySelector(".feedbackContainer");
 let feedback = document.querySelector("#feedback");
 let currentQuestionIndex = 0; // adding a variable to track current question index
 let gameIsOver = false; // adding a variable to track if the game is over
+let scoreCounter = 0;
+let scoreInputContainer = document.querySelector("#scoreInputContainer");
+let scoreTxt = document.querySelector("#scoreTxt");
+let scoreSpan = document.querySelector("#scoreSpan");
+let initialsContainer = document.querySelector(".initialsContainer");
+let initialsInput = document.querySelector("#initialsInput");
+let submitContainer = document.querySelector(".submitContainer");
+let submitBtn = document.querySelector("#submitBtn");
+let highscoresContainer = document.querySelector("#highscoresContainer");
+let highscoresTxt = document.querySelector("#highscoresTxt");
+let highscoresListContainer = document.querySelector(".highscoresListContainer");
+let highscoresList = document.querySelector("#highscoresList");
+let highscores = []; // adding a variable to store highscores
+let resetBtnsContainer = document.querySelector(".resetBtnsContainer");
+let goBackBtn = document.querySelector("#goBackBtn");
+let clearBtn = document.querySelector("#clearBtn");
 
 // Hiding elements that are not needed at some point
 timerContainer.style.display = "none";
 qaContainer.style.display = "none";
+scoreInputContainer.style.display = "none";
+highscoresContainer.style.display = "none";
 
 //Creating a data structure to store all the questions and answers.
 // Used(https://www.w3schools.com/js/js_array_const.asp) as a reference.
@@ -152,6 +171,106 @@ const displayQuestion = function () {
 
 };
 
+//Displaying the final result of score and time
+const displayScore = function () {
+
+  scoreInputContainer.style.display = "block";
+  scoreSpan.textContent = scoreCounter;
+  timerContainer.style.display = "none";
+  qaContainer.style.display = "none";
+
+};
+
+// catching & Displaying highscores
+const displayHighscores = function () {
+
+  highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+  scoreInputContainer.style.display = "none";
+  highscoresContainer.style.display = "block";
+
+  highscoresList.innerHTML = "";
+
+  // iterating through the highscores array and creating a list item for each highscore and displaying it on the page
+  for (let i = 0; i < highscores.length; i++) {
+    let highscore = highscores[i];
+    let li = document.createElement("li");
+    li.textContent = `${highscore.initialsInput} - ${highscore.score}`;
+    highscoresList.appendChild(li);
+  };
+
+};
+
+// View Highscores button event listener
+const displayHighscoresView = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  startContainer.style.display = "none";
+  initialMsg.style.display = "none";
+  timerContainer.style.display = "none";
+  scoreInputContainer.style.display = "none";
+  highscoresContainer.style.display = "block";
+
+  displayHighscores();
+
+};
+
+const exSubmit = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const initials = initialsInput.value.trim().toUpperCase();
+  highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+  const highscore = {
+    initialsInput: initials,
+    score: scoreCounter
+  };
+
+  // Used(https://www.w3schools.com/js/js_array_sort.asp) as a reference.
+  // Used(https://www.w3schools.com/js/js_json_parse.asp) as a reference.
+  highscores.push(highscore);
+  highscores.sort((a, b) => b.score - a.score);
+  localStorage.setItem("highscores", JSON.stringify(highscores));
+  displayHighscores();
+
+};
+
+// Restart button event listener
+const restart = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  highscoresContainer.style.display = "none";
+  timerContainer.style.display = "none";
+  startContainer.style.display = "block";
+  initialMsg.style.display = "block";
+
+  // resetting all the counters and variables
+  timer.textContent = `Time remaining: 80`;
+  timeLeft = 80;
+  scoreCounter = 0;
+  currentQuestionIndex = 0;
+  clearInterval(timerInterval);
+  gameIsOver = false;
+
+};
+
+// Clear button event listener function
+const clearHighscores = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  localStorage.clear();
+  highscoresList.innerHTML = "";
+
+}
+
 // Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 const checkAnswer = function (event) {
@@ -167,6 +286,8 @@ const checkAnswer = function (event) {
   const correctAnswer = currentQuestion.answers[chosenAnswerIndex].correct; 
 
   if (correctAnswer) {
+
+    scoreCounter += 10;
     displayFeedback("Correct!");
   }
   else {
@@ -182,12 +303,15 @@ const checkAnswer = function (event) {
 
   currentQuestionIndex++; 
 
-  if (currentQuestionIndex < questions.length && !gameIsOver) { 
+  if (currentQuestionIndex < questions.length && !gameIsOver) {
+
     displayQuestion(); 
   }
   else { 
     timesUp();
     gameIsOver = true;
+    displayScore();
+
   };
   
 };
@@ -220,3 +344,15 @@ startButton.addEventListener("click", fireBtn);
 
 // Answer button event listener
 answerContainer.addEventListener("click", checkAnswer);
+
+// View Highscores button event listener
+allScores.addEventListener("click", displayHighscoresView);
+
+// Submit button event listener
+submitBtn.addEventListener("click", exSubmit);
+
+// Restart button event listener
+goBackBtn.addEventListener("click", restart);
+
+// Clear button event listener
+clearBtn.addEventListener("click", clearHighscores);
