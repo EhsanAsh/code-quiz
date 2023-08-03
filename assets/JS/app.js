@@ -1,8 +1,8 @@
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 // Used(https://www.w3schools.com/js/js_let.asp) as a reference.
 // Used(https://www.w3schools.com/js/js_const.asp) as a reference.
+
 // Defining variables
-let scoreContainer = document.querySelector("#scoreContainer");
 let allScores = document.querySelector("#allScores");
 let timerContainer = document.querySelector("#timerContainer");
 let timer = document.querySelector(".timer");
@@ -28,16 +28,11 @@ let scoreCounter = 0;
 let scoreInputContainer = document.querySelector("#scoreInputContainer");
 let scoreTxt = document.querySelector("#scoreTxt");
 let scoreSpan = document.querySelector("#scoreSpan");
-let initialsContainer = document.querySelector(".initialsContainer");
 let initialsInput = document.querySelector("#initialsInput");
-let submitContainer = document.querySelector(".submitContainer");
 let submitBtn = document.querySelector("#submitBtn");
 let highscoresContainer = document.querySelector("#highscoresContainer");
-let highscoresTxt = document.querySelector("#highscoresTxt");
-let highscoresListContainer = document.querySelector(".highscoresListContainer");
 let highscoresList = document.querySelector("#highscoresList");
 let highscores = []; // adding a variable to store highscores
-let resetBtnsContainer = document.querySelector(".resetBtnsContainer");
 let goBackBtn = document.querySelector("#goBackBtn");
 let clearBtn = document.querySelector("#clearBtn");
 
