@@ -223,6 +223,11 @@ const exSubmit = function (event) {
   event.stopPropagation();
 
   const initials = initialsInput.value.trim().toUpperCase();
+  if (initials === "" || initials.length > 3) {
+    alert("Please enter your initials (max 3 characters, no spaces and starting with a letter)");
+    return;
+  }
+
   highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
   const highscore = {
