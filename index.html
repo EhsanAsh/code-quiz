@@ -67,8 +67,37 @@
 
     </section>
 
+    <!-- Creating a section to contain the initials and score structure.-->
+    <section id="scoreInputContainer">
 
+      <h2 id="scoreTxt">All done!</h2>
+      <p>Your final score is <span id="scoreSpan"></span>.</p>
 
+      <div class="initialsContainer">
+        <input type="text" id="initialsInput" placeholder="Enter Initials">
+      </div>
+
+      <div class="submitContainer">
+        <button id="submitBtn" value="Submit">Submit</button>
+      </div>
+
+    </section>
+
+    <!-- Creating a section to contain the highscores structure.-->
+    <section id="highscoresContainer">
+
+      <h2 id="highscoresTxt">Highscores</h2>
+
+      <div class="highscoresListContainer">
+        <ol id="highscoresList"></ol>
+      </div>
+
+      <div class="resetBtnsContainer">
+        <button id="goBackBtn" value="Start again">Start again</button>
+        <button id="clearBtn" value="Clear Highscores">Clear Highscores</button>
+      </div>
+
+    </section>
 
   </main>
 
