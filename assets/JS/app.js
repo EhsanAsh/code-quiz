@@ -22,6 +22,7 @@ let answerBtn4 = document.querySelector("#answerBtn4");
 let feedbackContainer = document.querySelector(".feedbackContainer");
 let feedback = document.querySelector("#feedback");
 let currentQuestionIndex = 0; // adding a variable to track current question index
+let gameIsOver = false; // adding a variable to track if the game is over
 
 // Hiding elements that are not needed at some point
 timerContainer.style.display = "none";
@@ -125,9 +126,21 @@ const displayFeedback = function (text) {
 
 };
 
+// Checking if the time is up
+const timesUp = function () { 
+
+  if (timeLeft === 0) {
+    clearInterval(timerInterval);
+    timer.textContent = "Time's up!";
+    gameIsOver = true;
+  };
+
+};
+
 // Used(https://www.w3schools.com/js/js_arrays.asp) as a reference.
 const displayQuestion = function () {
 
+  if (gameIsOver) return;
   qaContainer.style.display = "block";
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -146,7 +159,7 @@ const checkAnswer = function (event) {
   event.preventDefault();
   event.stopPropagation();
 
-  if (!event.target.matches(".answerBtn")) return;
+  if (gameIsOver || !event.target.matches(".answerBtn")) return;
   
   const currentQuestion = questions[currentQuestionIndex];
   // getting the index of the chosen answer
@@ -162,15 +175,21 @@ const checkAnswer = function (event) {
     } else {
       timeLeft = 0;
     };
+
+    timesUp();
     displayFeedback("Wrong!");
   };
 
   currentQuestionIndex++; 
 
-  if (currentQuestionIndex < questions.length) { 
+  if (currentQuestionIndex < questions.length && !gameIsOver) { 
     displayQuestion(); 
+  }
+  else { 
+    timesUp();
+    gameIsOver = true;
   };
-
+  
 };
 
 // Start button event listener linked to the timer
@@ -187,9 +206,11 @@ const fireBtn = function (event) {
   const countDown = function () {
     timer.textContent = `Time remaining: ${timeLeft}`;
     timeLeft--;
+    timesUp();
   };
 
   timerInterval = setInterval(countDown, 1000);
+  gameIsOver = false;
   displayQuestion();
 
 };
