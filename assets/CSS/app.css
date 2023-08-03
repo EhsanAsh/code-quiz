@@ -114,8 +114,10 @@ main {
 }
 
 #qaContainer,
+#questionTxt,
 .answerContainer,
 .feedbackContainer,
+#feedback,
 #scoreInputContainer,
 #highscoresContainer,
 .resetBtnsContainer {
@@ -125,8 +127,6 @@ main {
 
 #questionTxt {
   float: left;
-  padding: 0.5em;
-  margin: 0.5em;
 }
 
 #questionTxt,
@@ -169,8 +169,6 @@ main {
 #feedback {
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 0.5em;
-  margin: 0.5em;
   text-align: center;
   color: rgba(69, 123, 157, 0.856);
   line-height: 1.5em;
@@ -221,10 +219,13 @@ main {
 }
 
 footer {
-  position: relative;
-  left: 35%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   color: #6a040f;
   padding: 0.5em;
-  margin: 1em;
   text-align: center;
 }
