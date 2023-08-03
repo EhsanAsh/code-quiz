@@ -213,7 +213,29 @@ const displayHighscoresView = function (event) {
   highscoresContainer.style.display = "block";
 
   displayHighscores();
-  
+
+};
+
+const exSubmit = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const initials = initialsInput.value.trim().toUpperCase();
+  highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+  const highscore = {
+    initialsInput: initials,
+    score: scoreCounter
+  };
+
+  // Used(https://www.w3schools.com/js/js_array_sort.asp) as a reference.
+  // Used(https://www.w3schools.com/js/js_json_parse.asp) as a reference.
+  highscores.push(highscore);
+  highscores.sort((a, b) => b.score - a.score);
+  localStorage.setItem("highscores", JSON.stringify(highscores));
+  displayHighscores();
+
 };
 
 // Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
@@ -292,3 +314,6 @@ answerContainer.addEventListener("click", checkAnswer);
 
 // View Highscores button event listener
 allScores.addEventListener("click", displayHighscoresView);
+
+// Submit button event listener
+submitBtn.addEventListener("click", exSubmit);
