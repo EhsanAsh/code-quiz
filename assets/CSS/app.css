@@ -92,7 +92,8 @@ main {
   margin: 0.5em;
 }
 
-#qaContainer {
+#qaContainer,
+#scoreInputContainer {
   background-color: rgba(241, 250, 238, 0.8);
   width: 50%;
   height: auto;
@@ -107,17 +108,22 @@ main {
 
 #qaContainer,
 .answerContainer,
-.feedbackContainer {
+.feedbackContainer,
+#scoreInputContainer {
   margin: 0.5em;
   padding: 0.7em;
 }
 
 #questionTxt {
   float: left;
-  font-size: 1.2rem;
-  font-weight: bold;
   padding: 0.5em;
   margin: 0.5em;
+}
+
+#questionTxt,
+#scoreInputContainer {
+  font-size: 1.2rem;
+  font-weight: bold;
   text-align: center;
   color: #457b9d;
   line-height: 1.5em;
