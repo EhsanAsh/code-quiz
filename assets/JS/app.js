@@ -160,7 +160,7 @@ const timesUp = function () {
 const displayQuestion = function () {
 
   if (gameIsOver) return;
-  qaContainer.style.display = "block";
+  qaContainer.style.display = "flex";
 
   const currentQuestion = questions[currentQuestionIndex];
   questionTxt.textContent = currentQuestion.question;
@@ -174,7 +174,7 @@ const displayQuestion = function () {
 //Displaying the final result of score and time
 const displayScore = function () {
 
-  scoreInputContainer.style.display = "block";
+  scoreInputContainer.style.display = "flex";
   scoreSpan.textContent = scoreCounter;
   timerContainer.style.display = "none";
   qaContainer.style.display = "none";
@@ -187,7 +187,7 @@ const displayHighscores = function () {
   highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
   scoreInputContainer.style.display = "none";
-  highscoresContainer.style.display = "block";
+  highscoresContainer.style.display = "flex";
 
   highscoresList.innerHTML = "";
 
@@ -211,7 +211,7 @@ const displayHighscoresView = function (event) {
   initialMsg.style.display = "none";
   timerContainer.style.display = "none";
   scoreInputContainer.style.display = "none";
-  highscoresContainer.style.display = "block";
+  highscoresContainer.style.display = "flex";
 
   displayHighscores();
 
@@ -252,8 +252,8 @@ const restart = function (event) {
 
   highscoresContainer.style.display = "none";
   timerContainer.style.display = "none";
-  startContainer.style.display = "block";
-  initialMsg.style.display = "block";
+  startContainer.style.display = "flex";
+  initialMsg.style.display = "flex";
 
   // resetting all the counters and variables
   timer.textContent = `Time remaining: 80`;
@@ -328,7 +328,7 @@ const fireBtn = function (event) {
   event.preventDefault();
   event.stopPropagation();
 
-  timerContainer.style.display = "block";
+  timerContainer.style.display = "flex";
   startContainer.style.display = "none";
   initialMsg.style.display = "none";
 
