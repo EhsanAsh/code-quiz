@@ -238,6 +238,27 @@ const exSubmit = function (event) {
 
 };
 
+// Restart button event listener
+const restart = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  highscoresContainer.style.display = "none";
+  timerContainer.style.display = "none";
+  startContainer.style.display = "block";
+  initialMsg.style.display = "block";
+
+  // resetting all the counters and variables
+  timer.textContent = `Time remaining: 80`;
+  timeLeft = 80;
+  scoreCounter = 0;
+  currentQuestionIndex = 0;
+  clearInterval(timerInterval);
+  gameIsOver = false;
+
+};
+
 // Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 const checkAnswer = function (event) {
@@ -317,3 +338,6 @@ allScores.addEventListener("click", displayHighscoresView);
 
 // Submit button event listener
 submitBtn.addEventListener("click", exSubmit);
+
+// Restart button event listener
+goBackBtn.addEventListener("click", restart);
