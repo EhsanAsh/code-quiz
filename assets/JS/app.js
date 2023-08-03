@@ -172,11 +172,49 @@ const displayQuestion = function () {
 
 //Displaying the final result of score and time
 const displayScore = function () {
+
   scoreInputContainer.style.display = "block";
   scoreSpan.textContent = scoreCounter;
   timerContainer.style.display = "none";
   qaContainer.style.display = "none";
-}
+
+};
+
+// catching & Displaying highscores
+const displayHighscores = function () {
+
+  highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+  scoreInputContainer.style.display = "none";
+  highscoresContainer.style.display = "block";
+
+  highscoresList.innerHTML = "";
+
+  // iterating through the highscores array and creating a list item for each highscore and displaying it on the page
+  for (let i = 0; i < highscores.length; i++) {
+    let highscore = highscores[i];
+    let li = document.createElement("li");
+    li.textContent = `${highscore.initialsInput} - ${highscore.score}`;
+    highscoresList.appendChild(li);
+  };
+
+};
+
+// View Highscores button event listener
+const displayHighscoresView = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  startContainer.style.display = "none";
+  initialMsg.style.display = "none";
+  timerContainer.style.display = "none";
+  scoreInputContainer.style.display = "none";
+  highscoresContainer.style.display = "block";
+
+  displayHighscores();
+  
+};
 
 // Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
@@ -218,7 +256,7 @@ const checkAnswer = function (event) {
     timesUp();
     gameIsOver = true;
     displayScore();
-    
+
   };
   
 };
@@ -251,3 +289,6 @@ startButton.addEventListener("click", fireBtn);
 
 // Answer button event listener
 answerContainer.addEventListener("click", checkAnswer);
+
+// View Highscores button event listener
+allScores.addEventListener("click", displayHighscoresView);
