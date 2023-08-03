@@ -1,3 +1,4 @@
+// Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 // Used(https://www.w3schools.com/js/js_let.asp) as a reference.
 // Used(https://www.w3schools.com/js/js_const.asp) as a reference.
 // Defining variables
@@ -259,6 +260,17 @@ const restart = function (event) {
 
 };
 
+// Clear button event listener function
+const clearHighscores = function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  localStorage.clear();
+  highscoresList.innerHTML = "";
+
+}
+
 // Here I'm trying to check if the answer is correct or not, and display the feedback accordingly.
 // Used (https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22051308#overview) as a reference.
 const checkAnswer = function (event) {
@@ -341,3 +353,6 @@ submitBtn.addEventListener("click", exSubmit);
 
 // Restart button event listener
 goBackBtn.addEventListener("click", restart);
+
+// Clear button event listener
+clearBtn.addEventListener("click", clearHighscores);
