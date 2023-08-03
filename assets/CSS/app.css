@@ -1,0 +1,262 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(141, 153, 174, 0.8);
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  font-size: 1.5rem;
+  padding: 2%;
+  color: #6a040f;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#allScores,
+#start,
+.answerBtn,
+#submitBtn,
+#goBackBtn,
+#clearBtn {
+  font-size: 1rem;
+  background-color: #ef233c;
+  color: #edf2f4;
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.7em;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+#allScores:hover,
+#start:hover,
+#submitBtn:hover,
+#goBackBtn:hover,
+#clearBtn:hover {
+  background-color: #d90429;
+  box-shadow: 0 0 0.5em rgba(217, 4, 39, 0.9);
+}
+
+#timerContainer {
+  align-self: flex-end;
+  margin: 0.5em;
+  padding: 0.5em;
+  border-right: 0.2em dashed #fb8500;
+}
+
+.timer {
+  font-weight: bold;
+  color: #0f4c5c;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5em auto 0.7em auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  margin: 0.4em;
+  padding: 1%;
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  margin: 0.3em;
+  padding: 0.3em;
+  line-height: 1.2em;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.startContainer {
+  align-self: flex-start;
+  margin: 0.5em;
+}
+
+#qaContainer,
+#scoreInputContainer,
+#highscoresContainer {
+  background-color: rgba(241, 250, 238, 0.8);
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border: 0.2em solid rgba(168, 218, 220, 0.55);
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em 0.1em rgba(168, 218, 220, 0.4);
+}
+
+#qaContainer,
+#questionTxt,
+.answerContainer,
+.feedbackContainer,
+#feedback,
+#scoreInputContainer,
+#highscoresContainer,
+.resetBtnsContainer {
+  margin: 0.5em;
+  padding: 0.7em;
+}
+
+#questionTxt {
+  float: left;
+}
+
+#questionTxt,
+#scoreInputContainer,
+#highscoresContainer {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #457b9d;
+  line-height: 1.5em;
+  letter-spacing: 0.07em;
+}
+
+.answerContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.answerBtn {
+  background-color: #a8dadc;
+  color: #457b9d;
+}
+
+.answerBtn:hover {
+  background-color: #457b9d;
+  color: #edf2f4;
+}
+
+.feedbackContainer {
+  width: 100%;
+  height: auto;
+  background-color: rgba(250, 235, 215, 0.5);
+  border-top: 0.1em solid #457b9d;
+}
+
+#feedback {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(69, 123, 157, 0.856);
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
+}
+
+#scoreInputContainer {
+  position: relative;
+  top: 25%;
+}
+
+.initialsContainer {
+  margin: 1em auto 0;
+}
+
+#initialsInput {
+  border: 0.1em solid #faebd7;
+  border-radius: 0.3em;
+  background-color: rgba(250, 235, 215, 0.5);
+}
+
+#initialsInput:focus {
+  outline: none;
+  border-right: 0.3em solid rgba(69, 123, 157, 0.8);
+}
+
+.highscoresListContainer {
+  font-family: "Bungee Spice", cursive;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 0.5em 0;
+}
+
+#highscoresTxt {
+  border-bottom: 0.1em solid rgba(69, 123, 157, 0.8);
+}
+
+#highscoresList,
+#highscoresTxt {
+  list-style: none;
+  padding: 0.2em;
+  margin: 0.2em;
+  text-align: left;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  color: #6a040f;
+  padding: 0.5em;
+  text-align: center;
+}
+
+@media only screen and (max-width: 650px) {
+  header {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #qaContainer,
+  #scoreInputContainer,
+  #highscoresContainer {
+    width: 80%;
+  }
+
+  #allScores,
+  #start,
+  .answerBtn,
+  #submitBtn,
+  #goBackBtn,
+  #clearBtn,
+  #questionTxt,
+  #scoreInputContainer,
+  #highscoresContainer,
+  #feedback,
+  #initialsInput,
+  #highscoresList,
+  #highscoresTxt {
+    font-size: 0.8rem;
+  }
+}

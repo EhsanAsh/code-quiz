@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <meta name="description" content="Ehsan Ashraf's coding quiz app">
+  <meta name="author" content="EhsanAsh">
+  <title>Coding Quiz Application</title>
+  <!-- Creating a title with a link to the favicon.ico file to be used as the website's icon.-->
+  <link rel="icon" href="./assets/images/logo/Favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/CSS/css-reset.css">
+  <link rel="stylesheet" href="./assets/CSS/app.css">
+  <!-- Creating a link to the google fonts that I used in the website.-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Quicksand&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Creating a header to contain the start quiz content.-->
+  <header>
+
+    <nav id="scoreContainer">
+      <button id="allScores" value="View Highscores">View Highscores</button>
+    </nav>
+
+    <div id="timerContainer">
+      <span class="timer"></span>
+    </div>
+
+    <h1>
+      <span class="title">Coding Quiz Challenge</span>
+      <span class="subtitle">Try to answer the following code-related questions within the time limit. Keep in mind that
+        incorrect answers will penalize your time by ten seconds!</span>
+    </h1>
+
+  </header>
+
+  <main>
+
+    <div class="startContainer">
+      <button id="start" value="Start Quiz">Start Quiz</button>
+    </div>
+
+    <!-- Creating a section to contain the questions and answers structure.-->
+    <section id="qaContainer">
+
+      <div class="questionContainer">
+        <h2 id="questionTxt"></h2>
+      </div>
+
+      <div class="answerContainer">
+        <button class="answerBtn" id="answerBtn1" title="answer1"></button>
+        <button class="answerBtn" id="answerBtn2" title="answer2"></button>
+        <button class="answerBtn" id="answerBtn3" title="answer3"></button>
+        <button class="answerBtn" id="answerBtn4" title="answer4"></button>
+      </div>
+
+      <div class="feedbackContainer">
+        <span id="feedback"></span>
+      </div>
+
+    </section>
+
+    <!-- Creating a section to contain the initials and score structure.-->
+    <section id="scoreInputContainer">
+
+      <h2 id="scoreTxt">All done!</h2>
+      <p>Your final score is <span id="scoreSpan"></span>.</p>
+
+      <div class="initialsContainer">
+        <label for="initialsInput">Enter Initials:</label>
+        <input type="text" id="initialsInput" placeholder="ex. EA" autocomplete="on" autofocus required>
+      </div>
+
+      <div class="submitContainer">
+        <button id="submitBtn" value="Submit">Submit</button>
+      </div>
+
+    </section>
+
+    <!-- Creating a section to contain the highscores structure.-->
+    <section id="highscoresContainer">
+
+      <div class="highscoresListContainer">
+        <h2 id="highscoresTxt">Highscores</h2>
+        <ol id="highscoresList"></ol>
+      </div>
+
+      <div class="resetBtnsContainer">
+        <button id="goBackBtn" value="Start again">Start again</button>
+        <button id="clearBtn" value="Clear Highscores">Clear Highscores</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footerContainer">
+      <span class="footerTxt">Coding Quiz Challenge</span>
+      <span class="footerTxt">&copy; | Aug, 2023 | Ehsan@sh</span>
+    </div>
+
+  </footer>
+
+  <script src="./assets/JS/app.js"></script>
+</body>
+
+</html>
